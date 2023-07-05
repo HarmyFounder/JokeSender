@@ -9,7 +9,7 @@ import java.util.Properties;
 public class MailSender {
 
     final String from = "ofbrick121@gmail.com";
-    String to = "@gmail.com";
+    String to = "svetaefi31@gmail.com";
 
     String host = "smtp.gmail.com";
     String smtpPort = "465";
@@ -31,18 +31,19 @@ public class MailSender {
                 }
             });
 
-    public void send(String text) throws MessagingException, InterruptedException {
+    public void send(String text, String recipientGmail) throws MessagingException, InterruptedException {
 
         MimeMessage message = new MimeMessage(session);
 
         message.setFrom(new InternetAddress(from));
-        message.setRecipient(Message.RecipientType.TO, new InternetAddress(to));
-        message.setSubject("АНЕКДОТ ЧТОБЫ ВЗОРВАТЬСЯ !!!! УРА АНЕКДОТ КАЖДЫЕ 10 СЕКУНДs");
+        message.setRecipient(Message.RecipientType.TO, new InternetAddress(recipientGmail));
+        message.setSubject("АНЕКДОТ ЧТОБЫ ВЗОРВАТЬСЯ !!!! УРА АНЕКДОТ КАЖДЫЕ 5 СЕКУНДs");
         message.setText(text);
 
         Transport.send(message);
 
-        Thread.sleep(10000);
+        System.out.println("Анекдот отправлен" );
+        Thread.sleep(5000);
 
     }
 
